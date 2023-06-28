@@ -30,8 +30,8 @@ nodemailerRouter.post("/envio-confirmacion", async (req, res) => {
 
     await user.update({ confirmationToken, confirmed: false });
 
-    // const confirmationLink = `https://ecommers-front-main.vercel.app/nodemailer/confirm/${confirmationToken}`;
-    const confirmationLink = `https://ecommers-front-main.vercel.app/home`;
+    // const confirmationLink = `https://ecommers-front-rust.vercel.app/nodemailer/confirm/${confirmationToken}`;
+    const confirmationLink = `https://ecommers-front-rust.vercel.app/home`;
 
     const transporter = nodemailer.createTransport({
       host: "smtp-mail.outlook.com",
@@ -92,7 +92,7 @@ nodemailerRouter.get("/confirm/:token", async (req, res) => {
 
     await user.update({ confirmed: true });
 
-    return res.redirect("https://ecommers-front-main.vercel.app/home");
+    return res.redirect("https://ecommers-front-rust.vercel.app/home");
   } catch (error) {
     console.error("Error al confirmar el usuario:", error);
     return res.status(500).json({ message: "Ocurrió un error al confirmar el usuario" });
