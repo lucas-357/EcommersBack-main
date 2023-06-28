@@ -1,12 +1,13 @@
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
+require('dotenv').config();
 const { seedDB, seedReviews, seedUsers } = require("./src/utils/index.js");
 
 conn.sync({ alter: true }).then(() => {
-  server.listen(3001, () => {
+  server.listen(process.env.PORT, () => {
     seedUsers()
     seedReviews()
     seedDB()
-    console.log("%s listening at 3001"); 
+    console.log("%s listening at ", process.env.PORT); 
   });
 });
