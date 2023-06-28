@@ -11,9 +11,9 @@ router.post("/", (req, res) => {
   let preference = {
     items: [],
     back_urls: {
-      success: `https://ecommers-front-rust.vercel.app/home`,
-      failure: "https://ecommers-front-rust.vercel.app/home",
-      pending: "https://ecommers-front-rust.vercel.app/home",
+      success: `https://ecommers-front-main.vercel.app/home`,
+      failure: "https://ecommers-front-main.vercel.app/home",
+      pending: "https://ecommers-front-main.vercel.app/home",
     },
     auto_return: "approved",
     binary_mode: true,

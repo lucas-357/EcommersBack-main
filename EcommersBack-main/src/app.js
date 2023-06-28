@@ -23,7 +23,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://ecommersback-production.up.railway.app/auth/google/callback",
+      callbackURL: "https://ecommersback-main-production.up.railway.app/auth/google/callback",
       passReqToCallback: true,
     },
     async (request, accessToken, refreshToken, profile, done) => {
@@ -39,7 +39,7 @@ passport.use(
         });
         done(null, user);
       } catch (error) {
-        const redirectUrl = "https://ecommers-front-rust.vercel.app/login"; 
+        const redirectUrl = "https://ecommers-front-main.vercel.app/login"; 
         done(false, false, { message: "Authentication failed", redirectUrl });
       }
     }
@@ -64,7 +64,7 @@ server.use(passport.initialize());
 
 
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://ecommers-front-rust.vercel.app'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', 'https://ecommers-front-main.vercel.app/'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept,Authorization');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
@@ -73,7 +73,7 @@ server.use((req, res, next) => {
 });
 
 server.use(cors({
-  origin: "https://ecommers-front-rust.vercel.app",
+  origin: "https://ecommers-front-main.vercel.app/",
   credentials: true,
   methods: ["GET", "POST", "OPTIONS", "PUT", "DELETE"],
   allowedHeaders: [
@@ -87,7 +87,7 @@ server.use(cors({
 
 // Configurar opciones de CORS
 // const corsOptions = {
-//   origin: "https://ecommers-front-rust.vercel.app", // Replace with the exact origin of your application
+//   origin: "https://ecommers-front-main.vercel.app/", // Replace with the exact origin of your application
 //   credentials: true,
 //   methods: "GET, POST, OPTIONS, PUT, DELETE",
 //   allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
